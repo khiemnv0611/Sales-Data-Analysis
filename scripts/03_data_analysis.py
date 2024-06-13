@@ -80,7 +80,7 @@ def save_analysis_result(result):
         os.makedirs(results_dir)
     
     file_path = os.path.join(results_dir, "analysis_report.txt")
-    with open(file_path, 'a') as f:
+    with open(file_path, 'a') as f: #Mở chế độ 'a' để thêm
         f.write(f"Analysis result for {result['table_name']}:\n")
         for key, value in result.items():
             if key != 'table_name':
@@ -89,7 +89,16 @@ def save_analysis_result(result):
     print(f"Analysis result saved to {file_path}")
 
 def main():
-    # Đọc dữ liệu từ các bảng đã làm sạch
+    """
+    Đọc dữ liệu từ các bảng đã làm sạch, phân tích và lưu lại kết quả.
+    """        
+    # Nếu không muốn ghi đè nội dung cũ của file analysis_report.txt, hãy comment 3 dòng dưới đây
+    # """""
+    file_path = os.path.join('results', "analysis_report.txt")
+    with open(file_path, 'w') as f: # Mở chế độ 'w' để ghi đè
+        f.write("")
+    # """
+    
     tables = ['cleaned_holidays_events', 'cleaned_oil', 'cleaned_stores', 'cleaned_transactions', 'cleaned_train', 'cleaned_test']
     for table in tables:
         print(f"Analyzing {table} table...")
