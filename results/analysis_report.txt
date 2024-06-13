@@ -1,0 +1,19 @@
+Analysis result for cleaned_holidays_events:
+  holiday_types: {'Holiday': 221, 'Event': 56, 'Additional': 51, 'Transfer': 12, 'Bridge': 5, 'Work Day': 5}
+
+Analysis result for cleaned_oil:
+  avg_oil_price: 67.71436595744682
+
+Analysis result for cleaned_stores:
+  store_counts_by_city: {'Quito': 18, 'Guayaquil': 8, 'Cuenca': 3, 'Santo Domingo': 3, 'Manta': 2, 'Latacunga': 2, 'Machala': 2, 'Ambato': 2, 'Quevedo': 1, 'Esmeraldas': 1, 'Loja': 1, 'Libertad': 1, 'Playas': 1, 'Daule': 1, 'Babahoyo': 1, 'Salinas': 1, 'Puyo': 1, 'Guaranda': 1, 'Ibarra': 1, 'Riobamba': 1, 'Cayambe': 1, 'El Carmen': 1}
+  store_counts_by_type: {'D': 18, 'C': 15, 'A': 9, 'B': 8, 'E': 4}
+
+Analysis result for cleaned_transactions:
+  total_transactions: 141478945
+
+Analysis result for cleaned_train:
+  total_sales: 254312184.17240626
+
+Analysis result for cleaned_test:
+  record_counts_by_date: {Timestamp('2017-08-16 00:00:00'): 1782, Timestamp('2017-08-17 00:00:00'): 1782, Timestamp('2017-08-18 00:00:00'): 1782, Timestamp('2017-08-19 00:00:00'): 1782, Timestamp('2017-08-20 00:00:00'): 1782, Timestamp('2017-08-21 00:00:00'): 1782, Timestamp('2017-08-22 00:00:00'): 1782, Timestamp('2017-08-23 00:00:00'): 1782, Timestamp('2017-08-24 00:00:00'): 1782, Timestamp('2017-08-25 00:00:00'): 1782, Timestamp('2017-08-26 00:00:00'): 1782, Timestamp('2017-08-27 00:00:00'): 1782, Timestamp('2017-08-28 00:00:00'): 1782, Timestamp('2017-08-29 00:00:00'): 1782, Timestamp('2017-08-30 00:00:00'): 1782, Timestamp('2017-08-31 00:00:00'): 1782}
+
