@@ -18,11 +18,13 @@ def preprocess_data(data):
     """
     Tiền xử lý dữ liệu, bao gồm tách các biến đầu vào (X) và đầu ra (y).
     """
-    # Loại bỏ các cột không cần thiết và chuyển đổi các biến phân loại thành số
-    data = pd.get_dummies(data, columns=['family'])
     # Tách các cột đầu vào (X) và cột đầu ra (y)
     X = data.drop(['sales', 'date', 'id'], axis=1)
     y = data['sales']
+    
+    # One-Hot Encoding cho các cột dạng chuỗi
+    X = pd.get_dummies(X, columns=['family'])
+    
     return X, y
 
 def train_model(X, y):
@@ -37,23 +39,28 @@ def train_model(X, y):
     model.fit(X_train, y_train)
     
     # In ra chỉ số đánh giá mô hình R^2 score trên tập kiểm tra
-    # R² score: 1 là hoàn hảo, 0 là không giải thích được gì, <0 là rất tệ
-    print(f"Model trained with R^2 score: {model.score(X_test, y_test)}") 
-    return model
+    print(f"Model trained with R^2 score: {model.score(X_test, y_test)}")
+    
+    # Lưu lại các tên cột để sử dụng khi dự đoán
+    feature_names = X.columns.tolist()
+    return model, feature_names
 
-def save_model(model):
+def save_model(model, feature_names):
     """
-    Lưu mô hình đã huấn luyện vào tệp 'model.pkl'.
+    Lưu mô hình đã huấn luyện vào tệp 'model.pkl' và lưu tên các cột vào 'feature_names.pkl'.
     """
     results_dir = 'results'
         
     if not os.path.exists(results_dir):
         os.makedirs(results_dir)    
     file_path = os.path.join(results_dir, "model.pkl")
+    feature_names_path = os.path.join(results_dir, "feature_names.pkl")
     
     # Lưu mô hình vào tệp
     joblib.dump(model, file_path)
+    joblib.dump(feature_names, feature_names_path)
     print(f"Model saved to {file_path}")
+    print(f"Feature names saved to {feature_names_path}")
 
 def main():
     """
@@ -61,8 +68,8 @@ def main():
     """
     data = load_cleaned_data()    
     X, y = preprocess_data(data)
-    model = train_model(X, y)
-    save_model(model)
+    model, feature_names = train_model(X, y)
+    save_model(model, feature_names)
 
 if __name__ == "__main__":
     main()
